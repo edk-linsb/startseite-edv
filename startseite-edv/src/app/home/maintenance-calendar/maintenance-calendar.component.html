@@ -1,0 +1,36 @@
+<app-collapsible-card title="Wartungskalender">
+    <table mat-table [dataSource]="filteredData$" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <ng-container matColumnDef="from">
+          <th mat-header-cell *matHeaderCellDef> Von </th>
+          <td mat-cell *matCellDef="let element"> {{element.from}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="to">
+          <th mat-header-cell *matHeaderCellDef> Bis </th>
+          
+          <td mat-cell *matCellDef="let element"> {{element.to}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="system">
+          <th mat-header-cell *matHeaderCellDef> System </th>
+          <td mat-cell *matCellDef="let element"> {{element.system}} </td>
+        </ng-container>
+
+        
+        <!-- Weight Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"> 
+            <a mat-icon-button><mat-icon>info</mat-icon></a>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+            [ngClass]="{'bg-warning': checkWarning(row) , 'bg-danger': checkDanger(row)}"
+            ></tr>
+    </table>
+</app-collapsible-card>

@@ -1,0 +1,19 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <div class="card-header">
+            <mat-card-title>{{title()}}</mat-card-title>
+            <a mat-icon-button (click)="expanded = !expanded">
+                <mat-icon>{{expanded ? "keyboard_arrow_up" : "keyboard_arrow_down" }}</mat-icon>
+            </a>
+        </div>
+    </mat-card-header>
+    
+    @if(expanded) {
+        <mat-card-content></mat-card-content>
+    } @else { 
+        <mat-card-content>
+            <ng-content>
+            </ng-content>
+        </mat-card-content>
+    }
+</mat-card>

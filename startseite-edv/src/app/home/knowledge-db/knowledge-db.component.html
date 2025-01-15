@@ -1,0 +1,43 @@
+<app-collapsible-card title="Wissensdatenbank">
+    <mat-selection-list>
+      <mat-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor" class="example-tree">
+        <!-- This is the tree node template for leaf nodes -->
+        <!-- There is inline padding applied to this node using styles.
+          This padding value depends on the mat-icon-button width. -->
+        <mat-nested-tree-node *matTreeNodeDef="let node">
+          <mat-list-option class="example-tree-option">
+            <div class="example-tree-node">
+              <a>
+                {{node.text}}
+              </a>
+              <mat-icon>link</mat-icon>
+            </div>
+          </mat-list-option>
+        </mat-nested-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-nested-tree-node
+            *matTreeNodeDef="let node; when: hasChild"
+            matTreeNodeToggle [cdkTreeNodeTypeaheadLabel]="node.name">
+          <mat-list-item>
+            <div class="example-tree-expandable-node">
+              <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'Toggle ' + node.text">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{tree.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+
+              {{node.text}}
+
+            </div>
+          </mat-list-item>
+          <!-- There is inline padding applied to this div using styles.
+              This padding value depends on the mat-icon-button width.  -->
+          <div [class.example-tree-invisible]="!tree.isExpanded(node)"
+              role="group">
+            <ng-container matTreeNodeOutlet></ng-container>
+          </div>
+        </mat-nested-tree-node>
+      </mat-tree>
+    </mat-selection-list>
+</app-collapsible-card>

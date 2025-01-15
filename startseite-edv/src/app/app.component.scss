@@ -1,0 +1,28 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.toolbar-entry {
+    margin-left: 1rem;
+    font-size: 16px;
+}
+
+.toolbar-entry:hover {
+    cursor:pointer;
+    color: gray;
+}
+
+.toolbar-title {
+    margin-right: 1rem;
+}
+
+.toolbar-title:hover {
+    cursor:pointer;
+    color: gray;
+}
+
+main {
+    margin: 2rem;
+}
+
+
